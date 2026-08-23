@@ -1,0 +1,9 @@
+title: Sacra Confraternita del Passo
+description: Sfide a passi per amici, confratelli e rivali di buon cuore.
+url: https://augustoadz.github.io
+baseurl: /la-sacra-confraternita-del-passo
+lang: it
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
