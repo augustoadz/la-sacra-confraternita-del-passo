@@ -11,22 +11,22 @@ permalink: /terms/en/
 
 # Terms of Service — Sacra Confraternita del Passo
 
-> **DRAFT — not reviewed by a lawyer.** Founder-written terms, current as of
-> 2026-08-01. They must receive a legal review before the app is monetized or
-> distributed beyond the founder's closed circle of invited members.
+> **DRAFT — not reviewed by a lawyer.** Founder-written boilerplate, current
+> as of 2026-09-27. Must get a real legal review before the app is monetized
+> or distributed beyond the founder's closed circle of invited members.
 
-**Version:** 1.0 · **Effective date:** 2026-08-01
+**Version:** 1.1 · **Prepared:** 2026-09-27 · **Effective:** with the app release presenting Privacy Policy 2.3
 
 ## 1. Acceptance
 
 By signing in to Sacra Confraternita del Passo ("the app"), you agree to
-these Terms and to the [Privacy Policy]({{ site.baseurl }}/privacy/en/). If
-you don't agree, don't use the app.
+these Terms and to the [Privacy Policy]({{ site.baseurl }}/privacy/en/). If you don't agree, don't use
+the app.
 
 ## 2. What the app is
 
 A private, invite-only mobile app that turns your daily step count (read
-from Apple Health) into social, tournament-style challenges among a closed
+from the device health platform: Apple Health on iOS, Health Connect on Android) into social, tournament-style challenges among a closed
 group of friends and friends-of-friends. It is **not** a medical device, not
 medical advice, and not a substitute for professional guidance about
 exercise or health conditions. Talk to a doctor before starting any new
@@ -44,40 +44,39 @@ physical activity, especially if you have a pre-existing condition.
 
 You agree not to:
 - Falsify or tamper with your step data. The app compares your synced step
-  count against a fresh Apple Health reading and flags suspicious drops for
+  count against a fresh device-health reading and flags suspicious drops for
   founder review — this is an honor-system-plus-detection design suited to a
   trusted friend group, not a hard technical guarantee, and abusing it may
   get your account suspended.
 - Harass, impersonate, or misrepresent yourself to other members.
 - Use the app for anything illegal, or try to access another member's
-  account or data outside what the app's own sharing rules (see the
-  [Privacy Policy, §4]({{ site.baseurl }}/privacy/en/#4-who-can-see-data-inside-scp))
-  already show you.
+  account or data outside what the app's own sharing rules (see
+  [Privacy Policy §4]({{ site.baseurl }}/privacy/en/)) already show you.
+
+Android aggregates can include manual entries; this limitation does not
+authorize fabrication. SCP does not promise detection of every manual entry.
 
 ## 5. Your content
 
 Your nickname and any profile customization you set stay yours. By using
 the app, you allow us to display it to other members per the visibility
-rules in the [Privacy Policy, §4]({{ site.baseurl }}/privacy/en/#4-who-can-see-data-inside-scp).
-Challenge names, trophy names/graphics, and the app's own branding (crests,
-mottos, terminology) belong to the app.
+rules in [Privacy Policy §4]({{ site.baseurl }}/privacy/en/). Challenge names, trophy names/graphics, and
+the app's own branding (crests, mottos, terminology) belong to the app.
 
-## 6. Premium features & subscriptions (forward-looking — not live yet)
+## 6. Current beta and payments
 
-Once introduced, premium features will be offered as an **auto-renewing
-subscription** purchased through Apple's App Store (and, once Android
-launches, Google Play). Subscription payment, renewal, cancellation, and
-refunds are handled by Apple/Google under their own standard terms — we
-don't process payment details ourselves. We'll give reasonable notice
-in-app before any price change takes effect for existing subscribers. This
-section will be expanded with specifics once the premium tier actually
-launches.
+The current invite-only iOS/Android beta has no billing or subscriptions. Any
+future paid offering would require a separate update to the terms before use.
+Use one device per account; automatic cross-platform transfer is not supported
+in this beta. Rango derives from stored daily totals from the whole Rome signup
+day. Consecration is deferred; no background step sync is promised. Android
+local reminders can arrive after the chosen time due to system restrictions.
 
 ## 7. Suspension & termination
 
 We may suspend or terminate an account for violating §4, or if requested by
-the member themself. You can request account deletion at any time as described
-in the [Privacy Policy, §6]({{ site.baseurl }}/privacy/en/#6-retention-and-account-deletion).
+the member themself. You can request account deletion at any time per
+[Privacy Policy §6]({{ site.baseurl }}/privacy/en/).
 
 ## 8. No warranty; limitation of liability
 

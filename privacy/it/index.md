@@ -12,13 +12,13 @@ permalink: /privacy/it/
 # Informativa sulla privacy — Sacra Confraternita del Passo
 
 > **BOZZA — non revisionata da un legale.** Questa informativa è stata redatta
-> per la beta TestFlight, accessibile solo su invito, di Sacra Confraternita
+> per la beta iOS e Android, accessibile solo su invito, di Sacra Confraternita
 > del Passo. Descrive in buona fede, e con attenzione al GDPR, il funzionamento
 > attuale dell'app. Dovrà essere sottoposta a revisione legale prima di una
 > distribuzione pubblica, della monetizzazione o di qualsiasi ampliamento
 > sostanziale oltre la cerchia chiusa di invitati del fondatore.
 
-**Versione:** 2.1 · **Data di entrata in vigore:** 23 agosto 2026
+**Versione:** 2.3 · **Preparata il:** 27 settembre 2026 · **Entrata in vigore:** con il rilascio dell’app che presenta la versione 2.3
 
 ## 1. Chi siamo
 
@@ -37,18 +37,23 @@ Trattiamo le seguenti categorie di dati:
 - **Dati dell'account e del consenso:** indirizzo email, identificativo utente
   dell'autenticazione Supabase, nickname, data di creazione dell'account,
   relazione d'invito, data e versione del consenso privacy prestato.
-- **Dati sui passi provenienti da Apple Health (HealthKit):** conteggi dei passi
-  registrati automaticamente per i giorni e gli intervalli di date necessari
-  all'app. Le registrazioni manuali sono escluse.
+- **Dati sui passi:** su iOS, conteggi giornalieri registrati automaticamente
+  da Apple Health (HealthKit), escluse le registrazioni manuali; su Android,
+  aggregati giornalieri da Health Connect, che possono comprendere inserimenti
+  manuali che SCP non è in grado di distinguere.
 - **Dati derivati sull'attività fisica:** totali giornalieri sincronizzati,
-  totali complessivi da quando hai aderito a SCP o hai iniziato l'attuale ciclo
-  di Rango, XP del ciclo, Rango e relativi valori di avanzamento.
+  totali complessivi dall'intera giornata d'iscrizione secondo il calendario
+  di Roma, XP del ciclo, Rango e relativi progressi. Il server calcola
+  l'avanzamento dai totali giornalieri salvati; il telefono non carica un
+  conteggio complessivo separato. La Consacrazione è rinviata in questa versione.
 - **Dati relativi alle sfide e alle funzionalità social:** sfide create o a cui
   partecipi, inviti, stato di partecipazione, relazioni tra Confratelli, squadre,
   calendari, punteggi, classifiche, risultati, trofei, Imprese e altri dati
   storici delle competizioni.
-- **Comunicazioni e preferenze:** notifiche nell'app, eventi del feed attività,
-  stato di lettura, obiettivo giornaliero, scelte di visibilità e preferenze
+- **Comunicazioni e preferenze:** notifiche nell'app e push remote, eventi del
+  feed attività, stato di lettura, token del dispositivo per Apple Push
+  Notification service (APNs) usato per raggiungere il dispositivo su cui hai
+  effettuato l'accesso, obiettivo giornaliero, scelte di visibilità e preferenze
   relative alle notifiche.
 - **Dati tecnici e di sicurezza:** normali log di autenticazione e di servizio
   prodotti dai nostri fornitori, che possono comprendere data e ora, indirizzo
@@ -68,13 +73,11 @@ Health. Non richiede frequenza cardiaca, sonno, posizione, allenamenti, cartelle
 cliniche o altre categorie Health e non scrive mai dati in Apple Health. I passi
 inseriti manualmente nell'app Salute sono esclusi dai conteggi di SCP.
 
-Quando concedi l'accesso, SCP legge i totali necessari a calcolare i punteggi
-giornalieri recenti o mancanti e l'avanzamento del Rango a partire dalla data in
-cui hai aderito, oppure dall'inizio del ciclo di Rango corrente. Le letture
-avvengono sul dispositivo quando l'app deve aggiornare queste funzioni. I totali
-giornalieri e derivati risultanti vengono quindi sincronizzati con il database
-Supabase di SCP, affinché sfide, classifiche e funzioni social possano operare
-tra membri e dispositivi diversi.
+Quando concedi l'accesso, SCP legge in primo piano i totali giornalieri recenti
+e mancanti dei passi. Questi totali vengono sincronizzati con il database
+Supabase di SCP per sfide, classifiche e funzioni social. Il Rango è calcolato
+sul server dai giorni salvati. SCP non rilegge HealthKit soltanto per mostrare
+il Rango.
 
 Il permesso HealthKit è gestito da Apple e può essere modificato in qualsiasi
 momento nell'app Salute o nelle impostazioni privacy di iOS. Apple non comunica
@@ -86,6 +89,45 @@ cancellare o richiedere accesso a tali copie come descritto nella sezione 7.
 
 Non utilizziamo i dati derivati da HealthKit per pubblicità, marketing o data
 mining e non li vendiamo.
+
+### Android / Health Connect
+
+SCP richiede **soltanto READ_STEPS**, per il conteggio giornaliero aggregato
+ufficiale dei passi. Non scrive mai dati salute e non richiede né accesso alla
+salute in background né uno storico esteso. Non legge frequenza cardiaca,
+sonno, posizione, allenamenti o altre categorie salute e non raccoglie
+direttamente dati dai sensori di movimento. Health Connect necessita di una
+fonte che registri i passi; SCP non è un contapassi autonomo. La disponibilità
+del fornitore e lo storico leggibile variano secondo la versione Android e la
+cronologia delle autorizzazioni. Gli aggregati possono comprendere inserimenti
+manuali o fonti di terze parti; SCP non dichiara di escluderli in modo affidabile
+su Android.
+
+Il permesso viene richiesto soltanto dopo che scegli di collegarti. Aggiornare
+Home o un'altra schermata che sincronizza i passi legge in primo piano i giorni
+recenti o mancanti disponibili e carica i totali giornalieri nello stesso
+database Supabase. Il pannello Health Connect mostra invece una lettura
+giornaliera locale. SCP non carica i singoli record salute né identificativi
+dei dispositivi di origine. Le schermate del Rango leggono soltanto totali e
+date dal server. Accesso negato o revocato, fornitore assente, dati mancanti o
+errori non vengono caricati come passi a zero inventati. I giorni già salvati
+restano conservati quando non sono più leggibili.
+
+Puoi consultare i dati SCP esistenti senza collegare Health Connect. Puoi
+revocare il permesso nelle impostazioni di Health Connect in qualsiasi momento;
+la revoca interrompe le letture salute future ma non elimina i totali già
+sincronizzati con SCP. Esportazione, eliminazione e revoca del consenso sono
+descritte più avanti. Usa un solo dispositivo SCP per account; questa beta non
+unisce i totali di più telefoni e non supporta il trasferimento automatico tra
+piattaforme.
+
+Android offre promemoria locali facoltativi, abilitati separatamente dall'accesso
+salute. Usano allarmi di sistema non esatti e possono essere ritardati dalla
+gestione energetica; non sincronizzano passi in background. SCP non invia
+notifiche push remote su Android e non usa FCM. Le preferenze delle notifiche e
+lo stato dell'introduzione a Health Connect sono memorizzati localmente. I dati
+Health Connect non sono usati per pubblicità, vendita, marketing o data mining;
+il loro uso è limitato alle funzioni SCP indicate.
 
 ## 3. Perché trattiamo i dati e relative basi giuridiche
 
@@ -103,16 +145,21 @@ mining e non li vendiamo.
   le classifiche. Quando tali verifiche comportano il trattamento dei dati sui
   passi, si applica anche il tuo consenso esplicito al trattamento dei dati
   relativi all'attività fisica.
-- **Inviare comunicazioni di servizio:** i codici di accesso e i messaggi
-  nell'app servono al funzionamento del servizio. Le categorie facoltative di
-  notifiche nell'app possono essere disattivate nelle Impostazioni; anche il
-  promemoria giornaliero sul dispositivo è facoltativo e locale.
+- **Inviare comunicazioni di servizio:** codici di accesso, messaggi nell'app
+  e relativi avvisi push remoti servono al funzionamento del servizio. Le
+  categorie facoltative di notifiche possono essere disattivate nelle
+  Impostazioni; gli avvisi remoti possono essere disattivati anche nelle
+  impostazioni iOS (le push remote sono disponibili solo su iOS). Il promemoria
+  giornaliero sul dispositivo resta facoltativo e locale.
 
 Presti il consenso esplicito al trattamento dei dati sui passi selezionando la
-relativa casella dopo aver visualizzato questa informativa. iOS chiede poi
-separatamente se SCP può leggere il Conteggio passi tramite HealthKit.
+relativa casella dopo aver visualizzato questa informativa. Il permesso del
+dispositivo è separato: iOS chiede l'accesso al Conteggio passi di HealthKit;
+Android chiede l'accesso ai passi di Health Connect dopo che scegli di
+collegarti. Rifiutare l'accesso sul dispositivo permette comunque di consultare
+i dati SCP salvati.
 
-Puoi revocare il consenso in qualsiasi momento revocando l'accesso HealthKit e
+Puoi revocare il consenso in qualsiasi momento revocando l'accesso HealthKit o Health Connect e
 contattandoci, oppure eliminando l'account dalle Impostazioni. La revoca non
 pregiudica la liceità dei trattamenti effettuati prima di essa. Poiché il
 trattamento dei passi è necessario al servizio principale di sfide di SCP, al
@@ -149,7 +196,7 @@ vengono condivisi con altri membri autenticati:
 
 Nessun contenuto di SCP è destinato a essere visibile sul web aperto. Non
 vendiamo né concediamo in uso i dati dei membri, non mostriamo pubblicità e non
-condividiamo dati derivati da HealthKit con inserzionisti o intermediari di dati.
+condividiamo dati derivati dalla salute con inserzionisti o intermediari di dati.
 
 ## 5. Fornitori del servizio e localizzazione dei dati
 
@@ -164,10 +211,15 @@ Per il funzionamento di SCP utilizziamo i seguenti fornitori:
   Display dal servizio di distribuzione dei font di Google. Google può ricevere
   normali informazioni di connessione, come indirizzo IP e metadati della
   richiesta. Le richieste dei font non contengono i totali dei passi di SCP.
+- **Google / Android:** Health Connect fornisce aggregati salute sul dispositivo.
+  Android gestisce le notifiche locali e l'eventuale distribuzione tramite
+  Google Play secondo le proprie condizioni; SCP non invia dati salute tramite FCM.
 - **Apple:** HealthKit fornisce sul dispositivo la fonte del Conteggio passi;
-  Apple può inoltre trattare informazioni relative alla distribuzione e alla
-  diagnostica di TestFlight o App Store secondo le proprie condizioni. SCP non
-  invia ad Apple il proprio database dei passi sincronizzati tramite TestFlight.
+  Apple può trattare informazioni sulla distribuzione e sulla diagnostica di
+  TestFlight o App Store secondo le proprie condizioni. Apple Push Notification
+  service riceve il token del dispositivo e il contenuto dell'avviso necessari
+  a recapitare una notifica remota. SCP non invia ad Apple il proprio database
+  dei passi sincronizzati tramite TestFlight o APNs.
 
 Questi fornitori possono trattare dati tecnici o dell'account limitati in altri
 Paesi, secondo le proprie condizioni in materia di protezione dei dati e le
@@ -193,6 +245,8 @@ La funzione autonoma **Elimina il mio account** elimina definitivamente:
   e l'invito associato all'email dell'account;
 - notifiche, eventi del feed attività e istantanee dei primati di gruppo che
   contengono il nickname del membro;
+- le registrazioni dei token APNs dell'account; il normale logout scollega
+  invece il dispositivo fisico corrente dall'account autenticato;
 - gli incontri di lega che coinvolgono il membro, nonché la sua identità e i
   passi registrati nelle partite condivise dei tornei; e
 - i promemoria programmati da SCP e le preferenze legate all'account sul
@@ -222,10 +276,12 @@ Ove applicabile, puoi chiederci di:
 - ottenere dati portabili; e
 - revocare il consenso in qualsiasi momento.
 
-Le Impostazioni includono un'esportazione autonoma in formato JSON contenente
+Le Impostazioni includono collegamenti a questa informativa e ai Termini,
+oltre a un'esportazione autonoma in formato JSON contenente
 il record di autenticazione e del profilo, il consenso e le preferenze, gli
 inviti, i passi giornalieri, la cronologia antifrode, tutti i dati direttamente
-collegati a sfide, leghe, squadre e tornei, le notifiche, le istantanee del feed
+collegati a sfide, leghe, squadre e tornei, le notifiche, le registrazioni dei
+token APNs dei dispositivi, le istantanee del feed
 attività, le relazioni tra Confratelli, le Imprese, i titoli di gruppo e le
 strutture condivise delle sfide necessarie a comprendere tali dati. Non include
 i dati privati non pertinenti degli altri membri.

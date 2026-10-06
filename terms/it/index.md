@@ -12,11 +12,11 @@ permalink: /terms/it/
 # Termini di servizio — Sacra Confraternita del Passo
 
 > **BOZZA — non revisionata da un legale.** Termini redatti dal fondatore e
-> aggiornati al 1º agosto 2026. Dovranno essere sottoposti a revisione legale
+> aggiornati al 27 settembre 2026. Dovranno essere sottoposti a revisione legale
 > prima che l'app venga monetizzata o distribuita oltre la cerchia chiusa di
 > membri invitati dal fondatore.
 
-**Versione:** 1.0 · **Data di entrata in vigore:** 1º agosto 2026
+**Versione:** 1.1 · **Preparati il:** 27 settembre 2026 · **Entrata in vigore:** con il rilascio dell’app che presenta la Privacy Policy 2.3
 
 ## 1. Accettazione
 
@@ -27,7 +27,8 @@ non utilizzare l'app.
 ## 2. Cos'è l'app
 
 Un'app mobile privata, accessibile solo su invito, che trasforma il conteggio
-giornaliero dei passi, letto da Apple Health, in sfide sociali e competizioni in
+giornaliero dei passi, letto dalla piattaforma salute del dispositivo (Apple
+Health su iOS, Health Connect su Android), in sfide sociali e competizioni in
 stile torneo all'interno di un gruppo chiuso di amici e amici di amici. **Non è**
 un dispositivo medico, non fornisce consigli medici e non sostituisce il parere
 di un professionista in materia di attività fisica o condizioni di salute.
@@ -47,7 +48,7 @@ hai una condizione preesistente.
 Accetti di non:
 
 - falsificare o alterare i dati sui passi. L'app confronta il conteggio
-  sincronizzato con una nuova lettura di Apple Health e segnala diminuzioni
+  sincronizzato con una nuova lettura della piattaforma salute del dispositivo e segnala diminuzioni
   sospette affinché il fondatore possa verificarle. Si tratta di un sistema
   basato sulla fiducia con meccanismi di rilevamento, adatto a un gruppo fidato
   di amici, non di una garanzia tecnica assoluta; un abuso può comportare la
@@ -59,6 +60,10 @@ Accetti di non:
   condivisione dell'app, descritte nella
   [sezione 4 dell'Informativa sulla privacy]({{ site.baseurl }}/privacy/it/).
 
+Gli aggregati Android possono comprendere inserimenti manuali; questo limite
+non autorizza la falsificazione. SCP non promette di rilevare ogni inserimento
+manuale.
+
 ## 5. I tuoi contenuti
 
 Il tuo nickname e le eventuali personalizzazioni del profilo rimangono tuoi.
@@ -68,17 +73,16 @@ di visibilità descritte nella
 nomi delle sfide, i nomi e le immagini dei trofei e gli elementi distintivi
 dell'app, inclusi stemmi, motti e terminologia, appartengono all'app.
 
-## 6. Funzionalità premium e abbonamenti (previsione futura — non ancora attivi)
+## 6. Beta attuale e pagamenti
 
-Una volta introdotte, le funzionalità premium saranno offerte tramite un
-**abbonamento con rinnovo automatico** acquistato attraverso l'App Store di
-Apple e, dopo il lancio su Android, Google Play. Pagamento, rinnovo,
-annullamento e rimborsi saranno gestiti da Apple o Google secondo le rispettive
-condizioni standard; non tratteremo direttamente i dati di pagamento. Daremo
-un ragionevole preavviso nell'app prima che un'eventuale variazione di prezzo
-abbia effetto sugli abbonati esistenti. Questa sezione verrà ampliata con
-informazioni specifiche quando il livello premium sarà effettivamente
-disponibile.
+L'attuale beta iOS/Android, accessibile solo su invito, non prevede pagamenti
+né abbonamenti. Qualsiasi futura offerta a pagamento richiederà un aggiornamento
+separato dei Termini prima dell'uso. Usa un solo dispositivo per account;
+il trasferimento automatico tra piattaforme non è supportato in questa beta.
+Il Rango deriva dai totali giornalieri salvati a partire dall'intera giornata
+d'iscrizione secondo il calendario di Roma. La Consacrazione è rinviata;
+non è promessa una sincronizzazione dei passi in background. I promemoria
+locali Android possono arrivare dopo l'orario scelto a causa dei limiti del sistema.
 
 ## 7. Sospensione e cessazione
 
