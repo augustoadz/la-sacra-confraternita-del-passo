@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Termini di servizio — Sacra Confraternita del Passo
-description: Termini di servizio della beta privata di Sacra Confraternita del Passo.
+description: Termini di servizio della beta privata iOS e Android di Sacra Confraternita del Passo.
 lang: it
 alternate_url: /terms/en/
 alternate_lang: en
@@ -10,6 +10,8 @@ permalink: /terms/it/
 ---
 
 # Termini di servizio — Sacra Confraternita del Passo
+
+**Piattaforme:** iOS con Apple Health (HealthKit) e Android con Health Connect.
 
 > **BOZZA — non revisionata da un legale.** Termini redatti dal fondatore e
 > aggiornati al 27 settembre 2026. Dovranno essere sottoposti a revisione legale

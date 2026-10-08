@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Privacy Policy — Sacra Confraternita del Passo
-description: Privacy Policy for the private beta of Sacra Confraternita del Passo.
+description: Privacy Policy for the private iOS and Android beta of Sacra Confraternita del Passo.
 lang: en
 alternate_url: /privacy/it/
 alternate_lang: it
@@ -10,6 +10,8 @@ permalink: /privacy/en/
 ---
 
 # Privacy Policy — Sacra Confraternita del Passo
+
+**Platforms:** iOS with Apple Health (HealthKit) and Android with Health Connect.
 
 > **DRAFT — not reviewed by a lawyer.** This policy is written for the
 > invite-only iOS and Android beta of Sacra Confraternita del Passo. It is a

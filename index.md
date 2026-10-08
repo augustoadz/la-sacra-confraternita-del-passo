@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sacra Confraternita del Passo
-description: Un'app di sfide a passi per amici, confratelli e rivali di buon cuore.
+description: Un'app iOS e Android di sfide a passi per amici, confratelli e rivali di buon cuore.
 lang: it
 page_class: home-page
 permalink: /
@@ -10,7 +10,7 @@ permalink: /
 <section class="hero">
   <div class="shell hero-grid">
     <div>
-      <p class="eyebrow">Beta privata · iOS</p>
+      <p class="eyebrow">Beta privata · iOS e Android</p>
       <h1>Sacra Confraternita del Passo</h1>
       <p class="motto">«Contare è dovere, camminare è virtù.»</p>
       <p class="hero-copy">Un'app che trasforma i passi di ogni giorno in sfide, classifiche e storie condivise tra amici.</p>
@@ -36,7 +36,7 @@ permalink: /
       <article class="card">
         <span class="card-number">1</span>
         <h3>Cammina</h3>
-        <p>L'app legge in sola lettura i passi registrati automaticamente da iPhone e Apple Watch attraverso Apple Health.</p>
+        <p>L'app legge in sola lettura i passi da Apple Health (HealthKit) su iOS e da Health Connect su Android. Su Android serve una fonte che registri i passi: SCP non è un contapassi autonomo.</p>
       </article>
       <article class="card">
         <span class="card-number">2</span>

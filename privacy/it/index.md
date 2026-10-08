@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Informativa sulla privacy — Sacra Confraternita del Passo
-description: Informativa sulla privacy della beta privata di Sacra Confraternita del Passo.
+description: Informativa sulla privacy della beta privata iOS e Android di Sacra Confraternita del Passo.
 lang: it
 alternate_url: /privacy/en/
 alternate_lang: en
@@ -10,6 +10,8 @@ permalink: /privacy/it/
 ---
 
 # Informativa sulla privacy — Sacra Confraternita del Passo
+
+**Piattaforme:** iOS con Apple Health (HealthKit) e Android con Health Connect.
 
 > **BOZZA — non revisionata da un legale.** Questa informativa è stata redatta
 > per la beta iOS e Android, accessibile solo su invito, di Sacra Confraternita

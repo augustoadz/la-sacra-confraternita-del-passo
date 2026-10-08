@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Terms of Service — Sacra Confraternita del Passo
-description: Terms of Service for the private beta of Sacra Confraternita del Passo.
+description: Terms of Service for the private iOS and Android beta of Sacra Confraternita del Passo.
 lang: en
 alternate_url: /terms/it/
 alternate_lang: it
@@ -10,6 +10,8 @@ permalink: /terms/en/
 ---
 
 # Terms of Service — Sacra Confraternita del Passo
+
+**Platforms:** iOS with Apple Health (HealthKit) and Android with Health Connect.
 
 > **DRAFT — not reviewed by a lawyer.** Founder-written boilerplate, current
 > as of 2026-09-27. Must get a real legal review before the app is monetized
