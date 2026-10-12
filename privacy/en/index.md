@@ -19,7 +19,7 @@ permalink: /privacy/en/
 > must receive a legal review before public distribution, monetization, or
 > any material expansion beyond the founder's closed circle of invitees.
 
-**Version:** 2.3 · **Prepared:** 2026-09-27 · **Effective:** with the app release presenting version 2.3
+**Version:** 2.4 · **Prepared:** 2026-10-11 · **Effective:** with the app release presenting version 2.4
 
 ## 1. Who we are
 
@@ -50,17 +50,20 @@ We process the following categories of data:
   standings, results, trophies, achievements and other competition history.
 - **Communications and preferences:** in-app and remote push notifications,
   activity-feed events, read status, the Apple Push Notification service
-  (APNs) device token used to reach your signed-in device, daily goal,
-  visibility choices and notification preferences.
+  (APNs) token on iOS or Firebase Cloud Messaging (FCM) token on Android used
+  to reach your signed-in device, its account association and alert language,
+  daily goal, visibility choices and notification preferences.
 - **Technical and security data:** normal authentication and service logs
   produced by our providers, which may include timestamps, IP address, device
   or network information, and anti-cheat records when a newly read step total
   conflicts with a previously synced total.
 
-Language, the local daily-reminder schedule and completion of the first
-Health-permission introduction are stored on the device and are not
-intentionally uploaded to SCP's database. SCP does not include advertising or
-third-party analytics SDKs.
+The language is stored on the device and also with the server-side push
+registration. App notification-category preferences are stored on the server.
+Local reminder settings and schedules, and completion of the first
+health-permission introduction, remain on the device and are not intentionally
+uploaded to SCP's database. SCP does not include advertising or third-party
+analytics SDKs.
 
 ### Apple Health / HealthKit
 
@@ -110,12 +113,15 @@ and withdrawal requests are described below. Use one SCP device per account;
 this beta does not merge totals from multiple phones or support automatic
 cross-platform transfer.
 
-Android has optional local reminders, enabled separately from health access.
-They use inexact system alarms and may be delayed by power management; they do
-not sync steps in the background. SCP sends no remote Android push notifications
-and uses no FCM. Notification preferences and the Health Connect introduction
-state are stored locally. No advertising, sale, marketing or data mining uses
-are made of Health Connect data; use is limited to the stated SCP features.
+Android provides optional local reminders and remote notifications through
+Firebase Cloud Messaging, separately from health access. Reminders use inexact
+system alarms, may be delayed by power management and do not sync steps in the
+background. Push alerts concern app events and require notifications to be
+allowed in Android settings; SCP requests permission where required by the
+Android version. Optional categories are managed in SCP Settings. You can
+disable remote alerts in system settings on iOS and Android. No advertising,
+sale, marketing or data mining uses are made of Health Connect data; use is
+limited to the stated SCP features.
 
 ## 3. Why we process data and our legal bases
 
@@ -132,8 +138,8 @@ are made of Health Connect data; use is limited to the stated SCP features.
 - **Send service communications:** sign-in codes, in-app messages and their
   matching remote push alerts are used to operate the service. Optional
   notification categories can be disabled in Settings, and remote alerts can
-  also be disabled in iOS Settings (remote push is iOS-only); the daily device reminder remains optional
-  and local.
+  also be disabled in iOS or Android system settings; the daily device reminder
+  remains optional and local.
 
 You give explicit step-data consent by selecting the consent checkbox after
 being shown this policy. Device permission is separate: iOS asks for HealthKit
@@ -191,7 +197,18 @@ We use these providers to operate SCP:
   contain your SCP step totals.
 - **Google / Android:** Health Connect supplies on-device health aggregates.
   Android manages local notifications and any Google Play distribution under
-  its own terms; SCP does not send health data through FCM.
+  its own terms.
+- **Google / Firebase Cloud Messaging:** delivers Android push alerts. Google
+  receives technical device/installation identifiers, including the FCM token
+  and Firebase installation ID, technical connection data such as IP address,
+  and the content needed for the notification: text, recipient-account and
+  event identifiers and, where applicable, the challenge identifier. Text may
+  contain nicknames, challenge names and information about app progress or
+  results. SCP does not transfer its entire step database or original Health
+  Connect records through FCM. Google Analytics and advertising SDKs are not
+  integrated. Firebase processing may take place on Google's global
+  infrastructure under the provider's terms; it is not restricted to the
+  European region of the Supabase database.
 - **Apple:** HealthKit provides the on-device Step Count source and Apple may
   process TestFlight/App Store distribution and diagnostic information under
   its own terms. Apple Push Notification service receives the device token and
@@ -219,8 +236,8 @@ The self-service **Delete my account** action permanently:
   account's email;
 - removes notifications, activity-feed events and group-record snapshots that
   contain the member's nickname;
-- removes the account's APNs device-token registrations, while normal sign-out
-  detaches the current physical device from the signed-in account;
+- removes the account's APNs device-token registrations and Android FCM
+  registrations from SCP's database;
 - removes league fixtures involving the member and removes their identity and
   recorded steps from shared tournament matches; and
 - cancels SCP's scheduled reminders and clears account-scoped preferences on
@@ -234,8 +251,12 @@ longer identify or link to the deleted member. There is no placeholder profile:
 the deleted profile and its original user identifier no longer remain in SCP's
 public database.
 
-Supabase, Apple or Google operational logs and backups may remain for the
-limited periods set by those providers before being overwritten or deleted.
+Normal sign-out detaches the current device from the account. On Android it
+suspends alert display and attempts to delete the FCM token. Removing an SCP
+registration does not mean immediate deletion of every identifier or log
+separately processed by service providers. Supabase, Apple or Google operational
+logs and backups may remain for the limited periods set by those providers
+before being overwritten or deleted.
 
 ## 7. Your rights
 
@@ -251,8 +272,9 @@ Where applicable, you may ask us to:
 Settings includes links to this policy and the Terms, and a self-service JSON export containing the authentication and
 profile record, consent and preferences, invitations, daily steps, anti-cheat
 history, every direct challenge/league/team/tournament record, notifications,
-APNs device-token registrations, activity-feed snapshots, Confratello
-relationships, achievements, group titles and the shared challenge structures
+APNs device-token registrations and Android FCM registrations, activity-feed
+snapshots, Confratello relationships, achievements, group titles and the shared
+challenge structures
 needed to understand those records. It does not include unrelated members'
 private records.
 

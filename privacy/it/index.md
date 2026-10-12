@@ -20,7 +20,7 @@ permalink: /privacy/it/
 > distribuzione pubblica, della monetizzazione o di qualsiasi ampliamento
 > sostanziale oltre la cerchia chiusa di invitati del fondatore.
 
-**Versione:** 2.3 · **Preparata il:** 27 settembre 2026 · **Entrata in vigore:** con il rilascio dell’app che presenta la versione 2.3
+**Versione:** 2.4 · **Preparata il:** 11 ottobre 2026 · **Entrata in vigore:** con il rilascio dell’app che presenta la versione 2.4
 
 ## 1. Chi siamo
 
@@ -53,18 +53,21 @@ Trattiamo le seguenti categorie di dati:
   calendari, punteggi, classifiche, risultati, trofei, Imprese e altri dati
   storici delle competizioni.
 - **Comunicazioni e preferenze:** notifiche nell'app e push remote, eventi del
-  feed attività, stato di lettura, token del dispositivo per Apple Push
-  Notification service (APNs) usato per raggiungere il dispositivo su cui hai
-  effettuato l'accesso, obiettivo giornaliero, scelte di visibilità e preferenze
-  relative alle notifiche.
+  feed attività, stato di lettura, token Apple Push Notification service (APNs)
+  su iOS o Firebase Cloud Messaging (FCM) su Android usato per raggiungere il
+  dispositivo su cui hai effettuato l'accesso, associazione all'account e lingua
+  degli avvisi, obiettivo giornaliero, scelte di visibilità e preferenze delle
+  notifiche.
 - **Dati tecnici e di sicurezza:** normali log di autenticazione e di servizio
   prodotti dai nostri fornitori, che possono comprendere data e ora, indirizzo
   IP, informazioni sul dispositivo o sulla rete e registrazioni antifrode quando
   un conteggio dei passi appena letto non coincide con un totale sincronizzato
   in precedenza.
 
-La lingua, l'orario del promemoria giornaliero locale e il completamento della
-prima introduzione ai permessi Health sono memorizzati sul dispositivo e non
+La lingua è memorizzata sul dispositivo e anche con la registrazione push sul
+server. Le preferenze delle categorie di notifica dell'app sono conservate sul
+server. Le impostazioni e gli orari dei promemoria locali e il completamento
+della prima introduzione ai permessi salute restano sul dispositivo e non
 vengono intenzionalmente caricati nel database di SCP. SCP non contiene
 pubblicità né SDK di analisi di terze parti.
 
@@ -123,13 +126,16 @@ descritte più avanti. Usa un solo dispositivo SCP per account; questa beta non
 unisce i totali di più telefoni e non supporta il trasferimento automatico tra
 piattaforme.
 
-Android offre promemoria locali facoltativi, abilitati separatamente dall'accesso
-salute. Usano allarmi di sistema non esatti e possono essere ritardati dalla
-gestione energetica; non sincronizzano passi in background. SCP non invia
-notifiche push remote su Android e non usa FCM. Le preferenze delle notifiche e
-lo stato dell'introduzione a Health Connect sono memorizzati localmente. I dati
-Health Connect non sono usati per pubblicità, vendita, marketing o data mining;
-il loro uso è limitato alle funzioni SCP indicate.
+Android offre promemoria locali facoltativi e notifiche remote tramite Firebase
+Cloud Messaging, separatamente dall'accesso salute. I promemoria usano allarmi
+di sistema non esatti, possono essere ritardati dalla gestione energetica e non
+sincronizzano passi in background. Le push riguardano gli eventi dell'app e
+richiedono che le notifiche siano consentite nelle impostazioni Android; SCP
+chiede il permesso quando previsto dalla versione Android. Le categorie
+facoltative si gestiscono nelle Impostazioni SCP. Puoi disabilitare gli avvisi
+remoti nelle impostazioni del sistema su iOS e Android. I dati Health Connect
+non sono usati per pubblicità, vendita, marketing o data mining; il loro uso è
+limitato alle funzioni SCP indicate.
 
 ## 3. Perché trattiamo i dati e relative basi giuridiche
 
@@ -151,8 +157,8 @@ il loro uso è limitato alle funzioni SCP indicate.
   e relativi avvisi push remoti servono al funzionamento del servizio. Le
   categorie facoltative di notifiche possono essere disattivate nelle
   Impostazioni; gli avvisi remoti possono essere disattivati anche nelle
-  impostazioni iOS (le push remote sono disponibili solo su iOS). Il promemoria
-  giornaliero sul dispositivo resta facoltativo e locale.
+  impostazioni del sistema iOS o Android. Il promemoria giornaliero sul
+  dispositivo resta facoltativo e locale.
 
 Presti il consenso esplicito al trattamento dei dati sui passi selezionando la
 relativa casella dopo aver visualizzato questa informativa. Il permesso del
@@ -215,7 +221,18 @@ Per il funzionamento di SCP utilizziamo i seguenti fornitori:
   richiesta. Le richieste dei font non contengono i totali dei passi di SCP.
 - **Google / Android:** Health Connect fornisce aggregati salute sul dispositivo.
   Android gestisce le notifiche locali e l'eventuale distribuzione tramite
-  Google Play secondo le proprie condizioni; SCP non invia dati salute tramite FCM.
+  Google Play secondo le proprie condizioni.
+- **Google / Firebase Cloud Messaging:** consegna gli avvisi push Android.
+  Google riceve identificatori tecnici del dispositivo/installazione, inclusi
+  il token FCM e l'identificativo dell'installazione Firebase, dati tecnici di
+  connessione come l'indirizzo IP e il contenuto necessario alla notifica:
+  testo, identificatori dell'account destinatario e dell'evento e, quando
+  presente, della sfida. Il testo può contenere nickname, nomi delle sfide e
+  informazioni sui progressi o risultati nell'app. SCP non trasferisce tramite
+  FCM l'intero database dei passi né i record originali Health Connect. Non
+  sono integrati Google Analytics o SDK pubblicitari. Il trattamento Firebase
+  può avvenire sull'infrastruttura globale di Google secondo i termini del
+  fornitore; non è limitato alla regione europea del database Supabase.
 - **Apple:** HealthKit fornisce sul dispositivo la fonte del Conteggio passi;
   Apple può trattare informazioni sulla distribuzione e sulla diagnostica di
   TestFlight o App Store secondo le proprie condizioni. Apple Push Notification
@@ -247,8 +264,7 @@ La funzione autonoma **Elimina il mio account** elimina definitivamente:
   e l'invito associato all'email dell'account;
 - notifiche, eventi del feed attività e istantanee dei primati di gruppo che
   contengono il nickname del membro;
-- le registrazioni dei token APNs dell'account; il normale logout scollega
-  invece il dispositivo fisico corrente dall'account autenticato;
+- le registrazioni dei token APNs e FCM dell'account dal database SCP;
 - gli incontri di lega che coinvolgono il membro, nonché la sua identità e i
   passi registrati nelle partite condivise dei tornei; e
 - i promemoria programmati da SCP e le preferenze legate all'account sul
@@ -263,7 +279,11 @@ sono collegabili al membro eliminato. Non viene creato un profilo segnaposto: il
 profilo eliminato e il suo identificativo utente originario non rimangono nel
 database pubblico di SCP.
 
-I log operativi e i backup di Supabase, Apple o Google possono rimanere per i
+Il normale logout scollega il dispositivo corrente dall'account. Su Android
+sospende la visualizzazione degli avvisi e tenta di cancellare il token FCM.
+La rimozione di una registrazione SCP non equivale alla cancellazione immediata
+di tutti gli identificatori o log trattati autonomamente dai fornitori. I log
+operativi e i backup di Supabase, Apple o Google possono rimanere per i
 periodi limitati stabiliti da tali fornitori prima di essere sovrascritti o
 eliminati.
 
@@ -283,7 +303,7 @@ oltre a un'esportazione autonoma in formato JSON contenente
 il record di autenticazione e del profilo, il consenso e le preferenze, gli
 inviti, i passi giornalieri, la cronologia antifrode, tutti i dati direttamente
 collegati a sfide, leghe, squadre e tornei, le notifiche, le registrazioni dei
-token APNs dei dispositivi, le istantanee del feed
+token APNs e FCM dei dispositivi, le istantanee del feed
 attività, le relazioni tra Confratelli, le Imprese, i titoli di gruppo e le
 strutture condivise delle sfide necessarie a comprendere tali dati. Non include
 i dati privati non pertinenti degli altri membri.
